@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @user.address %>
+</p>
+
+<p>
+  <strong>Zip:</strong>
+  <%= @user.zip %>
+</p>
+
+<p>
+  <strong>Admin?</strong>
+  <%= @user.admin? %>
+</p>
+
+<p>
+  <strong>Event?</strong>
+  <%= @user.event? %>
+</p>
+
+<p>
+  <strong>Venue?</strong>
+  <%= @user.venue? %>
+</p>
+
+<p>
+  <strong>Press?</strong>
+  <%= @user.press? %>
+</p>
+
+<p>
+  <strong>Vendor?</strong>
+  <%= @user.vendor? %>
+</p>
+
+<p>
+  <strong>Standard?</strong>
+  <%= @user.standard? %>
+</p>
+
+<p>
+  <strong>Activated?</strong>
+  <%= @user.activated %>
+</p>
+
+<p>
+  <strong>Created at:</strong>
+  <%= @user.created_at %>
+</p>
+
+<p>
+  <strong>User Type:</strong>
+  <%= @user.userType %>
+</p>
+
+<p>
+  <strong>Updated at:</strong>
+  <%= @user.updated_at %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
