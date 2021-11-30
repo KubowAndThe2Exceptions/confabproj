@@ -10,6 +10,9 @@
     <%= f.label :address %>
     <%= f.text_field :address %>
 
+    <label for="userType">What type of account would you like?</label>
+    <%= f.select :userType, ["Attendee", "Venue", "Vendor", "Event", "Press"] %>
+
     <br><br>
 
     <%= f.submit "Search" %>

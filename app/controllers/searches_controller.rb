@@ -6,7 +6,7 @@ class SearchesController < ApplicationController
     def new
         @searches = Search.all
         @searches.each do |f| # Bad solution.  Future problem would be all records
-            f.destroy         # are deleted ANY time "new" is called.  Use sessions maybe?
+            f.destroy         # are deleted ANY time "new" is called.  Research/use sessions maybe?
         end
         @search = Search.new
     end
@@ -19,6 +19,6 @@ class SearchesController < ApplicationController
     private
 
     def search_params
-        params.require(:search).permit(:name, :email, :address)
+        params.require(:search).permit(:name, :email, :address, :userType)
     end 
 end
