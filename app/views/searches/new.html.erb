@@ -12,14 +12,14 @@
 <%= form_with model: @search do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %>
-
+    <br>
     <%= f.label :email %>
     <%= f.text_field :email %>
-
+    <br>
     <%= f.label :address %>
     <%= f.text_field :address %>
-
-    <label for="userType">What type of account would you like?</label>
+    <br>
+    <label for="userType">Type</label>
     <%= f.select :userType, ["Attendee", "Venue", "Vendor", "Event", "Press"] %>
 
     <br><br>

@@ -7,20 +7,19 @@
 </ul>
 </div>
 
-<%= stylesheet_link_tag "uindex" %>
 <h1>Users</h1>
 
 <%= link_to "Advanced Search", new_search_path %>
 
 <%= link_to 'New User', new_user_path %>
-<table>
+<table class="usercard">
   <thead>
     <tr>
       <th colspan="3"></th>
     </tr>
   </thead>
+  <% @users.each do |user| %>
   <tbody>
-    <% @users.each do |user| %>
       <tr>
         <td><%= user.userType %></td>
       </tr>
