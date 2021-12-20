@@ -1,10 +1,13 @@
 class Search < ApplicationRecord
     def search_user
-        userResults = User.where("lower(name) LIKE ? 
-        OR lower(email) LIKE ? 
-        OR lower(address) LIKE ?", 
-        "%#{name.downcase}%", "%#{email.downcase}%", 
-        "%#{address.downcase}%")
+        userResults = User.all
+        if !search_input.empty? && usertype != "None"
+            userResults = User.where("lower(name) LIKE ? AND usertype LIKE ?", "%#{search_input.downcase}%", "#{usertype}")
+        elsif !search_input.empty?
+            userResults = User.where("lower(name) LIKE ?", "%#{search_input.downcase}%")
+        else
+            userResults = User.all
+        end
 
         return userResults
     end 

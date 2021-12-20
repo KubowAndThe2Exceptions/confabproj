@@ -1,9 +1,7 @@
 class CreateSearches < ActiveRecord::Migration[6.1]
   def change
     create_table :searches do |t|
-      t.string :name
-      t.string :email
-      t.string :address
+      t.string :search_input
 
       t.timestamps
     end

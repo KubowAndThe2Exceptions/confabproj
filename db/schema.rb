@@ -16,12 +16,10 @@ ActiveRecord::Schema.define(version: 2021_11_29_234838) do
   enable_extension "plpgsql"
 
   create_table "searches", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "address"
+    t.string "search_input"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "userType"
+    t.string "usertype"
   end
 
   create_table "users", force: :cascade do |t|
@@ -47,7 +45,7 @@ ActiveRecord::Schema.define(version: 2021_11_29_234838) do
     t.string "activation_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "userType"
+    t.string "usertype"
   end
 
 end

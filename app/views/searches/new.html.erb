@@ -7,20 +7,13 @@
 </ul>
 </div>
 
-<h1>Advanced Search</h1>
+<h1>Search User</h1>
 
 <%= form_with model: @search do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-    <br>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-    <br>
-    <%= f.label :address %>
-    <%= f.text_field :address %>
-    <br>
-    <label for="userType">Type</label>
-    <%= f.select :userType, ["Attendee", "Venue", "Vendor", "Event", "Press"] %>
+    <label for="search_input">Search</label>
+    <%= f.text_field :search_input %>
+    <label for="usertype">Account Type</label>
+    <%= f.select :usertype, ["None", "Attendee", "Venue", "Vendor", "Event", "Press"] %>
 
     <br><br>
 

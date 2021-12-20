@@ -4,22 +4,22 @@ class User < ApplicationRecord
     def correct_usertype
         # Matches user booleans based on userType.  NOTE: May be more dynamic as a hash?
         if self.venue
-            self.update_attribute(:userType, "Venue") # update_attribute should not be the final answer. Loose reason is that
+            self.update_attribute(:usertype, "Venue") # update_attribute should not be the final answer. Loose reason is that
         elsif self.vendor                             # it bypasses validation, which is not safe for a production environment.
-            self.update_attribute(:userType, "Vendor")
+            self.update_attribute(:usertype, "Vendor")
         elsif self.event
-            self.update_attribute(:userType, "Event")
+            self.update_attribute(:usertype, "Event")
         elsif self.press
-            self.update_attribute(:userType, "Press")
+            self.update_attribute(:usertype, "Press")
         else
             self.update_attribute(:standard, true)
-            self.update_attribute(:userType, "Attendee")
+            self.update_attribute(:usertype, "Attendee")
         end
     end
 
     def correct_userbool
         # Matches userType based on user booleans.  NOTE: May be more dynamic as a hash?
-        case self.userType
+        case self.usertype
         when "Attendee"
             self.update_attribute(:standard, true)
 
