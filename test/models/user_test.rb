@@ -5,6 +5,20 @@ class UserTest < ActiveSupport::TestCase
     @user = users(:one)
   end
 
+  test "user is valid" do
+    assert @user.valid?
+  end
+  
+  test "name should be present" do
+    @user.name = "        "
+    assert_not @user.valid?
+  end
+
+  test "email should be present" do
+    @user.email = "       "
+    assert_not @user.valid?
+  end
+
   test "correct_userbool works" do
     @user.correct_userbool
     assert_equal(@user.usertype, "Attendee")

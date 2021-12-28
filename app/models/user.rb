@@ -1,6 +1,8 @@
 class User < ApplicationRecord
     after_create :correct_usertype
-    
+    validates :name, presence: true
+    validates :email, presence: true
+
     def correct_usertype
         # Matches user booleans based on userType.  NOTE: May be more dynamic as a hash?
         if self.venue
