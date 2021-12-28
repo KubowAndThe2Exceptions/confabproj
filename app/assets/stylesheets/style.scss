@@ -29,7 +29,7 @@
         background-color: #333;
     }
 }
-.usercard{
+.usercard {
     tbody{
         display: block;
         border: hidden;
@@ -39,5 +39,12 @@
         border-radius: 8px;
         margin: 5px;
         border-collapse: separate;
+        td{
+            display: inline;
+            border: hidden;
+            background-color: whitesmoke;
+            border-radius: 8x;
+            border-collapse: separate;
+        }
     }
 }
