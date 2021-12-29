@@ -26,14 +26,11 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.correct_userbool
 
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: "User was successfully created." }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.save
+      flash[:notice] = "User created." 
+      redirect_to root_path
+    else
+      render 'new'
     end
   end
 
@@ -68,6 +65,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :email, :zip, :address, :usertype)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :zip, :address, :usertype)
     end
 end

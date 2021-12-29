@@ -3,7 +3,8 @@ require 'csv'
 csv_text = File.read(Rails.root.join('lib', 'seeds', 'user_data.csv'))
 csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1',:col_sep => "~")
 csv.each do |row|
-  User.create!(:name => row['name'], :email => row['email'], :admin => row['admin'], :event => row['event'], :venue => row['venue'], 
+  User.create!(:name => row['name'], :email => row['email'], :password => row['password'], 
+  :password_confirmation => row['password_confirmation'], :admin => row['admin'], :event => row['event'], :venue => row['venue'], 
   :press => row['press'], :vendor => row['vendor'], :activated => row['activated'], :activated_at => row['activated_at'], 
   :zip => row['zip'], :address => row['address'], :describe => row['describe'])
 end
