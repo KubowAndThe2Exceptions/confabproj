@@ -1,4 +1,6 @@
-<%= form_with(scope: :session, url: login_path) do |f| %>
+<%= render 'users/menu' %>
+
+<%= form_with(scope: :session, url: sessions_path) do |f| %>
 
 <div class="form-group">
   <%= f.label :email %><br/>

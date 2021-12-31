@@ -3,13 +3,22 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    @users = User.all
-    # @users = User.search(params[:search])
-    # @users = User.paginate(page: params[:page])
+    if logged_in?
+      @users = User.all
+      # @users = User.search(params[:search])
+      # @users = User.paginate(page: params[:page])
+    else
+      redirect_to new_session_path
+    end
   end
 
   # GET /users/1 or /users/1.json
   def show
+    if logged_in?
+
+    else
+      redirect_to new_session_path
+    end
   end
 
   # GET /users/new
@@ -19,6 +28,11 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    if logged_in?
+
+    else
+      redirect_to new_session_path
+    end
   end
 
   # POST /users or /users.json
@@ -30,30 +44,39 @@ class UsersController < ApplicationController
       flash[:notice] = "User created." 
       redirect_to root_path
     else
+      flash.now[:alert] = "There was something wrong with your login details."
       render 'new'
     end
   end
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        @user.correct_userbool
-        format.html { redirect_to @user, notice: "User was successfully updated." }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+    if logged_in?
+      respond_to do |format|
+        if @user.update(user_params)
+          @user.correct_userbool
+          format.html { redirect_to @user, notice: "User was successfully updated." }
+          format.json { render :show, status: :ok, location: @user }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      redirect_to new_session_path
     end
   end
 
   # DELETE /users/1 or /users/1.json
   def destroy
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
-      format.json { head :no_content }
+    if logged_in?
+      @user.destroy
+      respond_to do |format|
+        format.html { redirect_to users_url, notice: "User was successfully destroyed." }
+        format.json { head :no_content }
+      end
+    else
+      redirect_to new_session_path
     end
   end
 

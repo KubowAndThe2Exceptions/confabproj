@@ -1,11 +1,4 @@
-<div class="menu">
-<ul>
-<li class="active"><%= link_to 'Home', static_pages_home_path %></li>
-<li><%= link_to 'Connect', users_path%></li>
-<li><%= link_to "Advanced Search", new_search_path %></li>
-<li><%= link_to 'New User', new_user_path %></li>
-</ul>
-</div>
+<%= render 'users/menu' %>
 
 <h1>Main page</h1>
 <p>Welcome to the home page.  Its pretty empty in here.</p>
